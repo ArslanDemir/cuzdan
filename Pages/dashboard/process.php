@@ -36,7 +36,7 @@ foreach ($html as $key => $value) {
 	</tr>
 	<tr>
 		<td colspan="3"><b>Toplam</b></td>
-		<td align="right"><b><?php echo $total ?> TL</b></td>
+		<td align="right"><b><?=$total?> TL</b></td>
 	</tr>
 	<?php
 	foreach ($html as $key => $value) {
