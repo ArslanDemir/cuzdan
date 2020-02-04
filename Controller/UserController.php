@@ -16,15 +16,12 @@ class UserController extends Controller{
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = md5($_POST['password']);
-
 		if ($this->checkUser($email)) {
 			$message['status'] = 'error';
 			$message['message'] = "Kullandığınız E-posta sistemde adresi mevcut";
 			Router::redirect('register',$message);
 		}else{
-			if (
-			$this->model->register($name,$email,$password)
-			) {
+			if ($this->model->register($name,$email,$password)) {
 				$message['status'] = 'alert';
 				$message['message'] = "Başarılı bir şekilde kayıt oldunuz! \n Bilgilerinizle giriş yapabilirsiniz.";
 				Router::redirect('login',$message);
@@ -32,7 +29,6 @@ class UserController extends Controller{
 				$message['status'] = 'error';
 				$message['message'] = "Kayıt esnasında bir hata oluştu.\n Lütfen bilgilerinizi kontrol edip tekrar deneyiniz";
 				Router::redirect('register',$message);
-
 			}
 		}
 	}
@@ -51,19 +47,14 @@ class UserController extends Controller{
 			$message['status'] = 'success';
 			$message['message'] =  "Başarılı Bir Şekilde Giriş Yaptınız!\n Yönlendiriliyorsunuz.\n Lütfen Bekleyiniz.";
 			$_SESSION['login'] = true;
-			$_SESSION['name'] = $cevap['name'];
-			
+			$_SESSION['name'] = $cevap['name'];	
 			Router::redirect('login',$message);
-			return;
 		}
-
 		Router::redirect('/');
 	}
 
 	public function checkUser($email){
-		if (
-			$this->model->query("SELECT id FROM userlogin WHERE email = ? ",array($email))
-		) {
+		if ($this->model->query("SELECT id FROM userlogin WHERE email = ? ",array($email))) {
 			return true;
 		}
 	}
