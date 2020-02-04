@@ -5,20 +5,20 @@
 </head>
 <body>
 <div class="container">
-	<div class="row" style="margin-top: 10px;">
-			<div class="col-md-6">			
+	<div class="row" style="margin-top: 10px;">		
+			<div class="col">			
 				<div class="form-group">
 					<button class="form-control btn btn-danger" data-toggle="modal" data-target="#giderModal">Gider Ekle</button>
 				</div>
 			</div>
-			<div class="col-md-6">			
+			<div class="col">			
 				<div class="form-group">
 					<button class="form-control btn btn-success" data-toggle="modal" data-target="#gelirModal">Gelir Ekle</button>
 				</div>
 			</div>
-		</div>
+	</div>
 	<div class="row">
-		<div id="islemler" class="col-md-11">
+		<div id="islemler" class="col-md-12">
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
 					<a class="nav-link active" id="giderler-tab" data-toggle="tab" href="#giderler" role="tab" aria-controls="giderler" aria-selected="true">
@@ -58,12 +58,9 @@
 			        		<div class="form-group">
 			        			<label for="giderTur">Gider Türü</label>
 			        			<select name="giderTur" id="giderTur" class="form-control">
-			        				<option>Alışveriş</option>
-			        				<option>Otogaz</option>
-			        				<option>Borç Verme</option>
-			        				<option>Borç Ödeme</option>
-			        				<option>Kredi Taksiti Ödemesi</option>
-			        				<option>Kredi Kartı Ödemesi</option>
+			        				<option value="1">Alışveriş</option>
+			        				<option value="2">Otogaz</option>
+			        				<option value="3">Fatura</option>
 			        			</select>
 			        		</div>
 			        		<div class="form-group">
@@ -103,10 +100,7 @@
 			        		<div class="form-group">
 			        			<label for="gelirTur">Gelir Türü</label>
 			        			<select name="gelirTur" id="gelirTur" class="form-control">
-			        				<option>Maaş</option>
-			        				<option>Borç Alma</option>
-			        				<option>Borç Ödenmesi</option>
-			        				<option>Kredi Çekme</option>
+			        				<option value="4">Maaş</option>
 			        			</select>
 			        		</div>
 			        		<div class="form-group">

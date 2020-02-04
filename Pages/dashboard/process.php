@@ -6,7 +6,6 @@ if ($table == 'incomes') {
 }
 foreach ($html as $key => $value) {
 	?>
-	<div id="modal-aciklama">
 		<div class="modal fade" id="<?=$modalName.$value['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -25,7 +24,6 @@ foreach ($html as $key => $value) {
 				</div>
 			</div>
 		</div>
-	</div>
 	<?php
 }
 ?>
@@ -33,22 +31,19 @@ foreach ($html as $key => $value) {
 	<tr>
 		<td><b>Tarih</b></td>
 		<td><b>Açıklama</b></td>
+		<td align=right><b>Tür</b></td>
 		<td align="right"><b>Tutar</b></td>
 	</tr>
 	<tr>
-		<td><b>Toplam</b></td>
-		<td></td>
+		<td colspan="3"><b>Toplam</b></td>
 		<td align="right"><b><?php echo $total ?> TL</b></td>
 	</tr>
 	<?php
 	foreach ($html as $key => $value) {
 		?>
-		<tr>
+		<tr data-toggle="modal" data-target="#<?=$modalName.$value['id']?>">
 					<td><?=$value['date']?></td>
-					<td>
-					<div class="form-group">
-					<button class="form-control" data-toggle="modal" data-target="#<?=$modalName.$value['id']?>"><?=$value['title']?></button>
-				</div></td>
+					<td><b><?=$value['title']?></b></td>
 					<td align=right><?=$value['type']?></td>
 					<td align=right><?=$value['amount']?> TL</td>
 		</tr>

@@ -24,7 +24,7 @@ class BudgetController extends Controller{
 		$data[] = $req['description'];
 		$data[] = $req['amount'];
 		$data[] = date('Y-m-d',strtotime($req['date']));
-		$data[] = $this->types[$req['type']];
+		$data[] = $req['type'];
 		
 		if ($this->model->addExpenses($data)) {
 			return true;
@@ -39,7 +39,7 @@ class BudgetController extends Controller{
 		$data[] = $req['description'];
 		$data[] = $req['amount'];
 		$data[] = date('Y-m-d',strtotime($req['date']));
-		$data[] = $this->types[$req['type']];
+		$data[] = $req['type'];
 		
 		if ($this->model->addIncomes($data)) {
 			return true;
@@ -52,8 +52,8 @@ class BudgetController extends Controller{
 		$expenses = $this->model->getExpenses();
 		$total = 0;
 		foreach ($expenses as $key => $value) {
-			$value['type'] = $this->types[$value['type']];
 			$total += $value['amount'];
+			$expenses[$key]['type'] = $this->types[$value['type']];
 		}
 		return new View('dashboard/process',$data = array('html'=>$expenses,'total'=> $total,'table' => 'expenses'));
 	}
@@ -61,22 +61,11 @@ class BudgetController extends Controller{
 	public function getIncomes(){
 		$incomes = $this->model->getIncomes();
 		$total = 0;
-		echo "<pre>";
-		var_dump($incomes[0]['type']);
-		echo "</pre>";
 		foreach ($incomes as $key => $value) {
-//			echo $incomes[$key]['type'];
-//			print_r($key);
-//			print_r($value);
 			$total += $value['amount'];
-
-
-
-
-
-			$value['type'] = $this->types[$value['type']];
-			var_dump($value['type']);
+			$incomes[$key]['type'] = $this->types[$value['type']];
 		}
+		
 		return new View('dashboard/process',$data = array('html'=>$incomes,'total'=>$total,'table' => 'incomes'));
 	}
 }

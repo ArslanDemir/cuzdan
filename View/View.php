@@ -5,7 +5,6 @@ class View{
 		if (file_exists($file = PDIR.'/'.$path.'.php' )) {
 			extract($data);
 			ob_start();
-			require 'import.php';
 			require $file;
 			echo ob_get_clean();
 		}else{
