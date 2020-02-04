@@ -6,16 +6,16 @@
 <body>
 <div class="container">
 	<div class="row" style="margin-top: 10px;">		
-			<div class="col">			
-				<div class="form-group">
-					<button class="form-control btn btn-danger" data-toggle="modal" data-target="#giderModal">Gider Ekle</button>
-				</div>
+		<div class="col">			
+			<div class="form-group">
+				<button class="form-control btn btn-danger" data-toggle="modal" data-target="#giderModal">Gider Ekle</button>
 			</div>
-			<div class="col">			
-				<div class="form-group">
-					<button class="form-control btn btn-success" data-toggle="modal" data-target="#gelirModal">Gelir Ekle</button>
-				</div>
+		</div>
+		<div class="col">			
+			<div class="form-group">
+				<button class="form-control btn btn-success" data-toggle="modal" data-target="#gelirModal">Gelir Ekle</button>
 			</div>
+		</div>
 	</div>
 	<div class="row">
 		<div id="islemler" class="col-md-12">
