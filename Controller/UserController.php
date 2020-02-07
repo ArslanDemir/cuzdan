@@ -49,8 +49,9 @@ class UserController extends Controller{
 			$_SESSION['login'] = true;
 			$_SESSION['name'] = $cevap['name'];	
 			Router::redirect('login',$message);
+			return;
 		}
-		Router::redirect('/');
+		//Router::redirect('/');
 	}
 
 	public function checkUser($email){
