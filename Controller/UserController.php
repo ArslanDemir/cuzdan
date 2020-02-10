@@ -48,6 +48,7 @@ class UserController extends Controller{
 			$message['message'] =  "Başarılı Bir Şekilde Giriş Yaptınız!\n Yönlendiriliyorsunuz.\n Lütfen Bekleyiniz.";
 			$_SESSION['login'] = true;
 			$_SESSION['name'] = $cevap['name'];	
+			$_SESSION['id'] = $cevap['id'];
 			Router::redirect('login',$message);
 			return;
 		}
