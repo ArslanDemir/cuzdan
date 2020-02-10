@@ -22,6 +22,25 @@ function addExpenses(){
 	    }
 	});
 }
+function addExpensesType(){
+
+	title = $("#giderTuruBaslik").val();
+	type = $("#giderTuru").val();
+	owner = $("#giderTuruSahibi").val();
+	data = {title:title,type:type,owner:owner}
+	$.ajax({
+	    url: "islemler/giderTuru",
+	    type: "POST",
+	    data: {data : data} ,
+	    success: function (item) {
+	    	$("#giderTuruBaslik").empty();
+	    	location.reload();
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       console.log(textStatus, errorThrown);
+	    }
+	});
+}
 
 function addIncomes(){
 
@@ -44,6 +63,27 @@ function addIncomes(){
 	    }
 	});
 }
+
+function addIncomesType(){
+
+	title = $("#gelirTuruBaslik").val();
+	type = $("#gelirTuru").val();
+	owner = $("#gelirTuruSahibi").val();
+	data = {title:title,type:type,owner:owner}
+	$.ajax({
+	    url: "islemler/gelirTuru",
+	    type: "POST",
+	    data: {data : data} ,
+	    success: function (item) {
+	    	$("#gelirTuruBaslik").empty();
+	    	location.reload();
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	       console.log(textStatus, errorThrown);
+	    }
+	});
+}
+
 function ajaxGelirler(){
 	$.ajax({
 	    url: "gelirler",

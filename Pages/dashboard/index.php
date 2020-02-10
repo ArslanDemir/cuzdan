@@ -125,17 +125,17 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><span id="gelirTarih"><?=$_SESSION['name']?></span>/  Gelir Türü Ekle</h5>
+								<h5 class="modal-title" id="exampleModalLabel"><span id="gelirTuruTarih"><?=$_SESSION['name']?></span>/  Gelir Türü Ekle</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
 				        		<div class="form-group">
-				        			<label for="gelirTypeBaslik	">Gelir Türü Başlığı</label>
-				        			<input type="text" id="gelirTypeBaslik" name="gelirTypeBaslik" class="form-control">
-				        			<input type="hidden" id="gelirType" name="gelirType" value="0">
-				        			<input type="hidden" id="gelirTypeOwner" name="gelirTypeOwner" value="<?=$_SESSION['id']?>">
+				        			<label for="gelirTuruBaslik	">Gelir Türü Başlığı</label>
+				        			<input type="text" id="gelirTuruBaslik" name="gelirTuruBaslik" class="form-control">
+				        			<input type="hidden" id="gelirTuru" name="gelirTuru" value="0">
+				        			<input type="hidden" id="gelirTuruSahibi" name="gelirTuruSahibi" value="<?=$_SESSION['id']?>">
 				        		</div>
 							</div>
 							<div class="modal-footer">
@@ -151,7 +151,7 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><span id="gelirTarih"><?=$_SESSION['name']?></span>/  Gider Türü Ekle</h5>
+								<h5 class="modal-title" id="exampleModalLabel"><span ><?=$_SESSION['name']?></span>/  Gider Türü Ekle</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -159,9 +159,9 @@
 							<div class="modal-body">
 				        		<div class="form-group">
 				        			<label for="giderBaslik	">Gider Türü Başlığı</label>
-				        			<input type="text" id="gelirTypeBaslik" name="giderTypeBaslik" class="form-control">
-				        			<input type="hidden" id="giderType" name="giderType" value="1">
-				        			<input type="hidden" id="giderTypeOwner" name="giderTypeOwner" value="<?=$_SESSION['id']?>">
+				        			<input type="text" id="giderTuruBaslik" name="giderTuruBaslik" class="form-control">
+				        			<input type="hidden" id="giderTuru" name="giderTuru" value="1">
+				        			<input type="hidden" id="giderTuruSahibi" name="giderTuruSahibi" value="<?=$_SESSION['id']?>">
 				        		</div>
 							</div>
 							<div class="modal-footer">

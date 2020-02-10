@@ -16,6 +16,12 @@ class BudgetModel extends Model{
 		return $cevap;
 	}
 
+	public function getTYpes($data){
+		$sql = "SELECT * FROM types Where id = ?";
+		$cevap = $this->query($sql,$data);
+		return $cevap;
+	}
+
 	public function addExpenses($data){
 		$sql = "INSERT INTO expenses SET title = ?, description = ?, amount = ?, date = ?, type = ?";
 		if ($this->query($sql,$data)) {
@@ -30,7 +36,27 @@ class BudgetModel extends Model{
 		if ($this->query($sql,$data)) {
 			return true;
 		}else{
-			echo "model addExpenses function error";
+			echo "model addIncomes function error";
+			return false;
+		}
+	}
+
+	public function addIncomesType($data){
+		$sql = "INSERT INTO types SET title = ?, type = ?, owner = ?";
+		if ($this->query($sql,$data)) {
+			return true;
+		}else{
+			echo "model addIncomesType function error";
+			return false;
+		}
+	}
+
+	public function addExpensesType($data){
+		$sql = "INSERT INTO types SET title = ?, type = ?, owner = ?";
+		if ($this->query($sql,$data)) {
+			return true;
+		}else{
+			echo "model addExpensesType function error";
 			return false;
 		}
 	}

@@ -37,6 +37,10 @@ if (isset($_SESSION['login'])) {
 
 	Router::post('/islemler/gider','BudgetController@addExpenses');
 	Router::post('/islemler/gelir','BudgetController@addIncomes');
+
+
+	Router::post('/islemler/giderTuru','BudgetController@addExpensesType');
+	Router::post('/islemler/gelirTuru','BudgetController@addIncomesType');
 }
 
 Router::dispatch();

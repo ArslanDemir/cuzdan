@@ -32,6 +32,30 @@ class BudgetController extends Controller{
 			echo "bir sorun oluştu";
 		}
 	}
+
+	function addExpensesType(){
+		$data = array(); 
+		$data[] = $_POST['data']['title'];
+		$data[] = $_POST['data']['type'];
+		$data[] = $_POST['data']['owner'];
+		if ($this->model->addExpensesType($data)) {
+			return true;
+		}else{
+			echo "bir sorun oluştu";
+		}
+	}
+	public function addIncomesType(){
+		$data = array(); 
+		$data[] = $_POST['data']['title'];
+		$data[] = $_POST['data']['type'];
+		$data[] = $_POST['data']['owner'];
+		if ($this->model->addIncomesType($data)) {
+			return true;
+		}else{
+			echo "bir sorun oluştu";
+		}
+	}
+
 	public function addIncomes(array $data){
 		$req = $_POST['data'];
 		$data = array();
@@ -67,6 +91,10 @@ class BudgetController extends Controller{
 		}
 		
 		return new View('dashboard/process',$data = array('html'=>$incomes,'total'=>$total,'table' => 'incomes'));
+	}
+
+	function getTypes(){
+		$types = $this->model->getTypes($_SESSION['id']);
 	}
 }
 ?>
