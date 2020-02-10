@@ -17,8 +17,8 @@ class BudgetModel extends Model{
 	}
 
 	public function getTYpes($data){
-		$sql = "SELECT * FROM types Where id = ?";
-		$cevap = $this->query($sql,$data);
+		$sql = "SELECT * FROM types Where owner = ? AND type = ?";
+		$cevap = $this->fetchAll($sql,$data);
 		return $cevap;
 	}
 

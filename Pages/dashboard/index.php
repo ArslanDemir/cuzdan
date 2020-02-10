@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-2">
 			<div class="list-group">
-			  <span class="list-group-item list-group-item-action">İşlemler</span>
+			  <span class="list-group-item list-group-item-action"><b>İşlemler</b></span>
 			  <span class="list-group-item list-group-item-action" data-toggle="modal" data-target="#giderModal">Gider Ekle</span>
 			  <span class="list-group-item list-group-item-action" data-toggle="modal" data-target="#gelirModal">Gelir Ekle</span>
 			  <span class="list-group-item list-group-item-action" data-toggle="modal" data-target="#giderTuruModal" >Gider Türü Ekle</span>
@@ -29,12 +29,18 @@
 							Gelirler
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="giderTurler-tab" data-toggle="tab" href="#giderTurler" role="tab">Gider Türlerim</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="gelirTurler-tab" data-toggle="tab" href="#gelirTurler" role="tab">Gelir Türlerim</a>
+						</li>
 					</ul>
 					<div class="tab-content" id="tabContent">
-						<div class="tab-pane fade show active" id="giderler" aria-labelledby="giderler-tab">
-						</div>
-						<div class="tab-pane fade" id="gelirler" aria-labelledby="gelirler-tab">
-						</div>
+						<div class="tab-pane fade show active" id="giderler" aria-labelledby="giderler-tab"></div>
+						<div class="tab-pane fade" id="gelirler" aria-labelledby="gelirler-tab"></div>
+						<div class="tab-pane fade" id="giderTurler" aria-labelledby="giderTUrler-tab"></div>
+						<div class="tab-pane fade" id="gelirTurler" aria-labelledby="gelirTurler-tab"></div>
 					</div>
 				</div>
 			</div>
@@ -57,9 +63,9 @@
 					        		<div class="form-group">
 					        			<label for="giderTur">Gider Türü</label>
 					        			<select name="giderTur" id="giderTur" class="form-control">
-					        				<option value="1">Alışveriş</option>
-					        				<option value="2">Otogaz</option>
-					        				<option value="3">Fatura</option>
+					        				<?php foreach ($_SESSION['giderTurler'] as $key => $value): ?>
+					        					<option value="<?=$value['id']?>"><?=$value['title']?></option>
+					        				<?php endforeach ?>
 					        			</select>
 					        		</div>
 					        		<div class="form-group">
@@ -99,7 +105,9 @@
 					        		<div class="form-group">
 					        			<label for="gelirTur">Gelir Türü</label>
 					        			<select name="gelirTur" id="gelirTur" class="form-control">
-					        				<option value="4">Maaş</option>
+					        				<?php foreach ($_SESSION['gelirTurler'] as $key => $value): ?>
+					        					<option value="<?=$value['id']?>"><?=$value['title']?></option>
+					        				<?php endforeach ?>
 					        			</select>
 					        		</div>
 					        		<div class="form-group">
@@ -179,6 +187,8 @@
 </html>
 <script type="text/javascript">
 	$(document).ready(function(){
+		ajaxGelirTurleri();
+		ajaxGiderTurleri();
 		ajaxGelirler();
 		ajaxGiderler();
 	});

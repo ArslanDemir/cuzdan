@@ -111,3 +111,26 @@ function ajaxGiderler(){
 	    }
 	});
 }
+
+function ajaxGelirTurleri(){
+	$.ajax({
+		url:"gelirTurler",
+		type: "GET",
+		success:function(item){
+			console.log(item);
+			$("#gelirTurler").empty();
+			$("#gelirTurler").html(item);
+		}
+	});
+}
+function ajaxGiderTurleri(){
+		$.ajax({
+		url:"giderTurler",
+		type: "GET",
+		success:function(item){
+			console.log(item);
+			$("#giderTurler").empty();
+			$("#giderTurler").html(item);
+		}
+	});
+}
