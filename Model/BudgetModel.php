@@ -4,15 +4,15 @@
  */
 class BudgetModel extends Model{
 
-	public function getIncomes(){
-		$sql = "SELECT * FROM incomes ORDER BY (date) DESC";
-		$cevap = $this->fetchAll($sql);
+	public function getIncomes($id){
+		$sql = "SELECT * FROM incomes WHERE owner = ? ORDER BY (date) DESC";
+		$cevap = $this->fetchAll($sql,array($id));
 		return $cevap;
 	}
 
-	public function getExpenses(){
-		$sql = "SELECT * FROM expenses ORDER BY (date) DESC";
-		$cevap = $this->fetchAll($sql);
+	public function getExpenses($id){
+		$sql = "SELECT * FROM expenses WHERE owner = ? ORDER BY (date) DESC";
+		$cevap = $this->fetchAll($sql,array($id));
 		return $cevap;
 	}
 
@@ -23,7 +23,7 @@ class BudgetModel extends Model{
 	}
 
 	public function addExpenses($data){
-		$sql = "INSERT INTO expenses SET title = ?, description = ?, amount = ?, date = ?, type = ?";
+		$sql = "INSERT INTO expenses SET title = ?, description = ?, amount = ?, date = ?, type = ?, owner = ?";
 		if ($this->query($sql,$data)) {
 			return true;
 		}else{
@@ -32,7 +32,7 @@ class BudgetModel extends Model{
 		}
 	}
 	public function addIncomes($data){
-		$sql = "INSERT INTO incomes SET title = ?, description = ?, amount = ?, date = ?, type = ?";
+		$sql = "INSERT INTO incomes SET title = ?, description = ?, amount = ?, date = ?, type = ?, owner = ?";
 		if ($this->query($sql,$data)) {
 			return true;
 		}else{

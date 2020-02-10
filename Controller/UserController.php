@@ -18,7 +18,7 @@ class UserController extends Controller{
 		$password = md5($_POST['password']);
 		if ($this->checkUser($email)) {
 			$message['status'] = 'error';
-			$message['message'] = "Kullandığınız E-posta sistemde adresi mevcut";
+			$message['message'] = "Kullandığınız E-posta adresi sistemde mevcut";
 			Router::redirect('register',$message);
 		}else{
 			if ($this->model->register($name,$email,$password)) {
@@ -56,7 +56,8 @@ class UserController extends Controller{
 	}
 
 	public function checkUser($email){
-		if ($this->model->query("SELECT id FROM userlogin WHERE email = ? ",array($email))) {
+		$cevap = 	$this->model->fetchColumn("SELECT id FROM userlogin WHERE email = ? ",array($email));
+		if ($cevap) {
 			return true;
 		}
 	}

@@ -24,6 +24,7 @@ class BudgetController extends Controller{
 		$data[] = $req['amount'];
 		$data[] = date('Y-m-d',strtotime($req['date']));
 		$data[] = $req['type'];
+		$data[] = $_SESSION['id'];
 		
 		if ($this->model->addExpenses($data)) {
 			return true;
@@ -65,6 +66,7 @@ class BudgetController extends Controller{
 		$data[] = $req['amount'];
 		$data[] = date('Y-m-d',strtotime($req['date']));
 		$data[] = $req['type'];
+		$data[] = $_SESSION['id'];
 		
 		if ($this->model->addIncomes($data)) {
 			return true;
@@ -82,7 +84,7 @@ class BudgetController extends Controller{
 	}
 
 	public function getExpenses(){
-		$expenses = $this->model->getExpenses();
+		$expenses = $this->model->getExpenses($_SESSION['id']);
 		$total = 0;
 		foreach ($expenses as $key => $value) {
 			$total += $value['amount'];
@@ -92,7 +94,7 @@ class BudgetController extends Controller{
 	}
 
 	public function getIncomes(){
-		$incomes = $this->model->getIncomes();
+		$incomes = $this->model->getIncomes($_SESSION['id']);
 		$total = 0;
 		foreach ($incomes as $key => $value) {
 			$total += $value['amount'];
